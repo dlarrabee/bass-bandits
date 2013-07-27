@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130727004733) do
+ActiveRecord::Schema.define(version: 20130727051446) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,5 +45,42 @@ ActiveRecord::Schema.define(version: 20130727004733) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "members", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "seasons", force: true do |t|
+    t.integer  "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tournament_results", force: true do |t|
+    t.integer  "member_id"
+    t.integer  "tournament_id"
+    t.decimal  "weight",        precision: 10, scale: 0
+    t.integer  "fish_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tournament_results", ["member_id"], name: "index_tournament_results_on_member_id", using: :btree
+  add_index "tournament_results", ["tournament_id"], name: "index_tournament_results_on_tournament_id", using: :btree
+
+  create_table "tournaments", force: true do |t|
+    t.string   "lake"
+    t.date     "tournament_date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.integer  "season_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tournaments", ["season_id"], name: "index_tournaments_on_season_id", using: :btree
 
 end
