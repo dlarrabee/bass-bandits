@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
+ruby "2.0.0"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-
-# Use postgresql as the database for Active Record
-gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -28,9 +27,35 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
+# bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+group :development, :test do
+  gem 'mysql2'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'growl', require: false
+  gem 'guard-rspec'
+end
+
+gem 'haml-rails'
+gem 'bootstrap-sass'
+
+gem 'activeadmin',         github: 'gregbell/active_admin',         branch: 'rails4'
+gem 'ransack',             github: 'ernie/ransack',                 branch: 'rails-4'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'formtastic',          github: 'justinfrench/formtastic'
+
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
+gem 'unicorn'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -43,3 +68,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
