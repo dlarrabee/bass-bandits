@@ -1,21 +1,30 @@
+!!!
 %html
   %head
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %title= content_for?(:title) ? yield(:title) : "Rails Bootstrap"
-    %meta{:content => content_for?(:description) ? yield(:description) : "Rails Bootstrap", :name => "description"}/
-    = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
+    %meta{:content => content_for?(:description) ? yield(:description) : "Rails Bootstrap", :name => "description"}
+    = stylesheet_link_tag "application", :media => "all", data: {turbolinks_track: true}
+    = javascript_include_tag "application", data: {turbolinks_track: true}
     = csrf_meta_tags
   %body
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
+    .navbar.navbar-fixed-top
+      .navbar-inner
         .container
-          = render 'layouts/navigation'
-    %main{:role => "main"}
-      .container
-        .content
-          .row
-            .span12
-              = render 'layouts/messages'
-              = yield
-          %footer
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => "#"} PA Bass Bandits
+          .nav-collapse
+            %ul.nav
+              %li= link_to "Members", members_path
+    .content
+      .row
+        .span4
+        .span8
+      .row
+        .span12
+          = render 'layouts/messages'
+          = yield
+
