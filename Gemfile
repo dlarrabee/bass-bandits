@@ -40,6 +40,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'growl', require: false
   gem 'guard-rspec'
+  gem 'simplecov', require: false
 end
 
 gem 'haml-rails'
