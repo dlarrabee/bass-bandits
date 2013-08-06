@@ -1,0 +1,9 @@
+.row
+  .span2
+    =link_to tournament.lake, season_tournament_path(season_id: tournament.season.id, id: tournament.id)
+  .span2
+    =tournament.tournament_date
+  .span2
+    =tournament.start_time
+  .span2
+    =tournament.end_time

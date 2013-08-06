@@ -5,5 +5,11 @@
 .row
   .span2
   .span4
+    %strong Highest tournament weight:
+  .span6
+    =@member.largest_weight
+.row
+  .span2
+  .span4
     %h5 Tournament Results
 =render @member.tournament_results

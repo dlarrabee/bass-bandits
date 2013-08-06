@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MembersController do
+describe SeasonsController do
 
   describe "#index" do
     before { get :index }
@@ -10,10 +10,11 @@ describe MembersController do
 
   describe "#show" do
     before do
-      Member.stub(:find).with("200").and_return(double)
+      Season.stub(:find).with("200").and_return(double)
       get :show, id: 200
     end
 
     it { should respond_with(:success) }
   end
+
 end
